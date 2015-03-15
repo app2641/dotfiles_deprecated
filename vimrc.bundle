@@ -1,0 +1,321 @@
+"vunlde.vimで管理してるpluginを読み込む
+
+filetype off
+
+filetype off
+
+if has('vim_starting')
+  " 設定ファイルやプラグインの読み込みパスを追加する
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+
+  " neobundle#rcでプラグインの保存場所を指定する
+  " expand関数はシェルの変数を展開する。チルダパスも展開される
+  call neobundle#begin(expand('~/.vim/bundle/'))
+endif
+
+
+" -----------------
+" Edit
+" -----------------
+
+" NERD_commenter.vim :最強コメント処理 (<Leader>c<space>でコメントをトグル)
+NeoBundle 'scrooloose/nerdcommenter.git'
+
+" -- でメソッドチェーン整形
+NeoBundle 'c9s/cascading.vim'
+
+" インデントに色を付ける
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" XMLとかHTMLとかの編集機能を強化する
+NeoBundle 'xmledit'
+
+" 高機能整形・桁揃えプラグイン
+NeoBundle 'Align'
+
+" Markdownのテーブル整形など
+NeoBundle 'godlygeek/tabular'
+
+" マルチバイト対応の整形
+NeoBundle 'h1mesuke/vim-alignta'
+
+" undo履歴をツリーで表示する (need python support)
+NeoBundle 'Gundo'
+
+" テキストを括弧で囲む／削除する
+" ビジュアルモードで文字列選択後S'すると'で囲う
+" ds'で'除去、cs'"で'を"に変更
+NeoBundle 'tpope/vim-surround'
+
+" =など入力時、前後にスペースを入れる
+NeoBundle 'smartchr'
+
+" 任意のoperatorを簡単に定義できるようにする
+NeoBundle 'operator-user'
+
+" operator-camelize : camel-caseへの変換
+NeoBundle 'operator-camelize'
+
+" operator-replace : yankしたものでreplaceする
+NeoBundle 'operator-replace'
+
+" textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
+NeoBundle 'textobj-user'
+
+" vim-textobj-syntax : syntax hilightされたものをtext-objectに
+NeoBundle 'kana/vim-textobj-syntax.git'
+
+" vim-textobj-plugins : いろんなものをtext-objectにする
+NeoBundle 'thinca/vim-textobj-plugins.git'
+
+" vim-textobj-indent : インデントされたものをtext-objectに
+NeoBundle 'kana/vim-textobj-indent.git'
+
+" 「foo」 or 【bar】などをtext-objectに
+NeoBundle 'textobj-jabraces'
+
+" <C-a>でtrue/false切替。他色々
+NeoBundle 'taku-o/vim-toggle'
+
+" プレビューの見れる便利置換
+NeoBundle 'osyo-manga/vim-over'
+
+" true, false を簡単切り替え
+NeoBundle 'AndrewRadev/switch.vim'
+
+
+
+" -----------------
+"  補完
+" -----------------
+
+" 補完 neocomplcache.vim : 究極のVim的補完環境
+NeoBundle 'Shougo/neocomplcache'
+
+" php補完
+NeoBundle 'violetyk/neocomplete-php.vim'
+
+" neocomplcacheのsinpet補完
+NeoBundle 'Shougo/neosnippet.git'
+
+" neonippet集
+NeoBundle 'Shougo/neosnippet-snippets'
+
+" Serverspecのsnippet
+NeoBundle 'glidenote/serverspec-snippets'
+
+
+
+" -----------------
+"  検索 / 移動
+" -----------------
+
+" smooth_scroll.vim : スクロールを賢く
+" NeoBundle 'Smooth-Scroll'
+NeoBundle 'yuroyoro/smooth_scroll.vim'
+
+" vim-smartword : 単語移動がスマートな感じで
+NeoBundle 'smartword'
+
+" camelcasemotion : CamelCaseやsnake_case単位でのワード移動
+NeoBundle 'camelcasemotion'
+
+" <Leader><Leader>w/fなどで、motion先をhilightする
+NeoBundle 'EasyMotion'
+
+" matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
+NeoBundle 'matchit.zip'
+
+" ruby用のmatchit拡張 do..endの移動
+NeoBundle 'ruby-matchit'
+
+" grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
+NeoBundle 'grep.vim'
+
+" eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
+NeoBundle 'eregex.vim'
+
+" open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
+NeoBundle 'tyru/open-browser.vim'
+
+" VimからThe Silver Searcherを利用する
+NeoBundle 'rking/ag.vim'
+
+" ackコマンドを使いやすくする
+NeoBundle 'git://github.com/mileszs/ack.vim.git'
+
+
+
+" -----------------
+"  プログラミング補助
+" -----------------
+
+" quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
+NeoBundle 'thinca/vim-quickrun'
+
+" perldocやphpmanual等のリファレンスをvim上で見る
+NeoBundle 'thinca/vim-ref'
+
+" 様々なリファレンスファイル
+NeoBundle 'mojako/ref-sources.vim'
+
+" javascript リファレンス
+NeoBundle 'tokuhirom/jsref'
+
+" SQLUtilities : SQL整形、生成ユーティリティ
+NeoBundle 'SQLUtilities'
+
+" vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
+NeoBundle 'vim-ruby/vim-ruby'
+
+" rails.vim : rails的なアレ
+NeoBundle 'tpope/vim-rails'
+
+" vim-rspec : 簡単にRspec実行できたりとか
+NeoBundle 'thoughtbot/vim-rspec'
+
+" Pydiction : Python用の入力補完
+" NeoBundle 'Pydiction'
+
+" ソースコード上のメソッド宣言、変数宣言の一覧を表示
+NeoBundle 'taglist.vim'
+
+" エラーがある場所をhilight
+" NeoBundle 'errormarker.vim'
+
+
+
+
+" -----------------
+"  シンタックス
+" -----------------
+
+" haml
+NeoBundle 'haml.zip'
+
+" JavaScript
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'pangloss/vim-javascript'
+
+" jQuery
+NeoBundle 'jQuery'
+
+" nginx conf
+NeoBundle 'nginx.vim'
+
+" markdown
+NeoBundle 'tpope/vim-markdown'
+
+" coffee script
+NeoBundle 'kchmck/vim-coffee-script'
+
+" php
+NeoBundle 'StanAngeloff/php.vim'
+
+" ghc-mod
+NeoBundle 'eagletmt/ghcmod-vim'
+
+" slim
+NeoBundle 'slim-template/vim-slim'
+
+" JSX
+NeoBundle 'mxw/vim-jsx'
+
+" syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
+NeoBundle 'scrooloose/syntastic'
+
+
+
+" -----------------
+"  バッファ
+" -----------------
+
+" DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
+" NeoBundle 'DumbBuf'
+
+" NERDTree : ツリー型エクスプローラ
+NeoBundle 'The-NERD-tree'
+
+" vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
+NeoBundle 'vtreeexplorer'
+
+
+
+" -----------------
+"  エンコーディング
+" -----------------
+
+" Powerline向けのフォント
+NeoBundle 'git://github.com/Lokaltog/powerline-fonts.git'
+
+
+
+" -----------------
+"  ユーティリティ
+" -----------------
+
+" vimshell : vimのshell
+NeoBundle 'Shougo/vimshell.git'
+
+" vimproc : vimから非同期実行。vimshelleで必要
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+" vim Interface to Web API
+NeoBundle 'mattn/webapi-vim'
+
+" Buffer管理のLibrary
+NeoBundle 'thinca/vim-openbuf'
+
+" vimdoc 日本語
+NeoBundle 'yuroyoro/vimdoc_ja'
+
+" ステータスラインをカッコよくする
+NeoBundle 'Lokaltog/vim-powerline'
+
+" 自動保存
+" NeoBundle 'vim-scripts/vim-auto-save'
+
+
+
+" -----------------
+"  カラースキーマ
+" -----------------
+
+" JellyBeans
+NeoBundle 'nanotech/jellybeans.vim'
+
+
+
+" -----------------
+"  Unite
+" -----------------
+
+" unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+
+" helpをunite的に扱う
+NeoBundle 'tsukkee/unite-help'
+
+" 関数のアウトライン表示
+" NeoBundle 'h1mesuke/unite-outline', {'rev':'a6240f9982a1c3693020453e7e88fa355458cdad'}
+NeoBundle 'h1mesuke/unite-outline'
+
+" Rails向けunite
+NeoBundle 'basyura/unite-rails'
+
+" 履歴をunite的に扱う
+NeoBundle 'thinca/vim-unite-history'
+
+
+call neobundle#end()
+
+filetype plugin indent on
+

@@ -1,0 +1,48 @@
+[user]
+  name = app2641
+  email = app2641@gmail.com
+
+[alias]
+  br = branch
+  ch = checkout
+  ci = commit
+  df = diff HEAD
+  d1 = diff HEAD~
+  d2 = diff HEAD~~
+  d3 = diff HEAD~~~
+  d4 = diff HEAD~~~~
+  d5 = diff HEAD~~~~~
+  empty= commit --allow-empty
+  ft = fetch --prune
+  fta = fetch --all --prune
+  lg = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+  ls = ls-files
+  nm = merge --no-ff
+  pl = pull --rebase
+  psh = push
+  pshf = push --force-with-lease
+  st = status
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase -i
+  wip = !git add . && git commit -m 'wip' && git status
+
+[color]
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  grep = auto
+
+[core]
+  editor = /usr/bin/vim
+
+[credential]
+  helper = osxkeychain
+
+[credential "https://github.com/app2641"]
+  username = app2641
+
+[rebase]
+  autostash = true

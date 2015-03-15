@@ -1,0 +1,25 @@
+"-------------------------------------------------------------------------------
+" 補完・履歴 Complete
+"-------------------------------------------------------------------------------
+
+" コマンド補完を強化
+set wildmenu
+
+" コマンド補完を開始するキー
+set wildchar=<tab>
+
+" リスト表示，最長マッチ
+set wildmode=list:full
+
+" コマンド・検索パターンの履歴数
+set history=1000
+
+" 補完に辞書ファイル追加
+" set complete+=k
+
+" ruby.serverspec
+set ft=ruby.serverspec
+
+" 補完にneocomplcacheを使う
+source ~/dotfiles/vimrc.completion.neocomplcache
+

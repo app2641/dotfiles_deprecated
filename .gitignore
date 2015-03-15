@@ -1,24 +1,44 @@
-*.o
-\#*#
-*#
-.#*
-.*~
-*~
-.DS_Store
-*.sw[po]
-tags
-TAGS
-Session.vim
-.svn
-*.dSYM
-*.log
-*.dvi
-*.aux
-*.elc
-.zshrc.local
-samples
+### https://raw.github.com/github/gitignore/298588469ac0cb08a00eebf7b00efb5ab726daca/Global/osx.gitignore
 
-.vim/bundle/
-.vim/.netrwhist
-.vimrc_sample
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+### https://raw.github.com/github/gitignore/298588469ac0cb08a00eebf7b00efb5ab726daca/Global/vim.gitignore
+
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+
+### dotfiles
+
+vim/autoload/*
+!vim/autoload/.gitkeep
+vim/bundle/*
+!vim/bundle/.gitkeep
+vim/colors/*
+!vim/colors/.gitkeep
+vim/plugin/*
 

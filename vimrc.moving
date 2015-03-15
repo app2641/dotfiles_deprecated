@@ -1,0 +1,57 @@
+"-------------------------------------------------------------------------------
+" 移動設定 Move
+"-------------------------------------------------------------------------------
+
+" カーソルを表示行で移動する。論理行移動は<C-n>,<C-p>
+" noremap l <Up>
+" noremap k <Down>
+" noremap j <Left>
+" noremap ; <Right>
+
+
+" 行頭へ移動
+noremap <S-A> <Home>
+
+" 行末へ移動
+noremap <S-S> <End>
+
+" タブウィンドウ送り
+noremap <S-k> gt
+noremap <S-l> gt
+noremap <S-j> gT
+noremap <S-h> gT
+
+" 前回終了したカーソル行に移動
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+" 最後に編集された位置に移動
+nnoremap gb '[
+nnoremap gp ']
+
+" 対応する括弧に移動
+nnoremap ( %
+nnoremap ) %
+
+" タブで括弧移動
+noremap <Tab><Tab> %
+
+" 最後に変更されたテキストを選択する
+nnoremap gc  `[v`]
+vnoremap gc <C-u>normal gc<Enter>
+onoremap gc <C-u>normal gc<Enter>
+
+" カーソル位置の単語をyankする
+nnoremap vy vawy
+
+" 矩形選択で自由に移動する
+set virtualedit+=block
+
+"ビジュアルモード時vで行末まで選択
+vnoremap v $h
+
+" CTRL-hjklでウィンドウ移動
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
+
