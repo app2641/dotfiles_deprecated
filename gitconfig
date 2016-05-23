@@ -1,31 +1,31 @@
-[user]
-  name = app2641
-  email = app2641@gmail.com
-
 [alias]
+  ad = add
   br = branch
   ch = checkout
   ci = commit
+  clean-br = !git branch -d `git branch --merged master | grep -v master`
   df = diff HEAD
   d1 = diff HEAD~
   d2 = diff HEAD~~
   d3 = diff HEAD~~~
   d4 = diff HEAD~~~~
   d5 = diff HEAD~~~~~
+  df-name-prod = diff --name-only origin/master...@
   empty= commit --allow-empty
   ft = fetch --prune
   fta = fetch --all --prune
+  ls = ls-files
   lg = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
   ls = ls-files
   nm = merge --no-ff
   pl = pull --rebase
   psh = push
   pshf = push --force-with-lease
-  st = status
   rb = rebase
   rba = rebase --abort
   rbc = rebase --continue
   rbi = rebase -i
+  st = status
   wip = !git add . && git commit -m 'wip' && git status
 
 [color]
@@ -36,7 +36,11 @@
   grep = auto
 
 [core]
-  editor = /usr/bin/vim
+  editor = vim
+
+[user]
+  name = app2641
+  email = app2641@gmail.com
 
 [credential]
   helper = osxkeychain

@@ -76,6 +76,18 @@ export PS1="%{[0m%}
 %{[32m%}%n %{[32m%}%~%{[32m%}\$(parse_git_dirty)
 %(?|%{[36m%}${DEFAULT}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
 
+# export ZSH_THEME_GIT_PROMPT_DIRTY="✗"
+# export ZSH_THEME_GIT_PROMPT_CLEAN=""
+# function parse_git_branch() {
+  # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+# }
+
+# DEFAULT=$'\U1F430'
+# ERROR=$'\U1F363'
+# export PS1="
+# %F{green}[%{%}%~%{%}]%f%F{cyan}\$(parse_git_branch)%f %F{yellow}\$(parse_git_dirty)%f
+# %(?|%{%}${DEFAULT} ${DEFAULT} ${DEFAULT}  <|%{%}${ERROR} ${ERROR} ${ERROR}  <)%{%} %{%}"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -102,16 +114,21 @@ export PS1="%{[0m%}
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias alc="alc-cmd s"
 alias be="bundle exec"
-alias g="git"
-alias rk="rake"
-alias rs="rspec"
-alias sch="ps ax | ag "
-alias sp="spring"
-alias sprs="spring rspec -fd"
-alias sprk="spring rake"
 alias db:st="spring rake db:migrate:status"
 alias db:up="spring rake db:migrate"
 alias db:down="spring rake db:rollback"
+alias dm='docker-machine'
+alias dc='docker-compose'
+alias g="git"
+alias rk="bin/rake"
+alias rs="bin/rspec"
+alias pullreq='hub compare'
+alias sch="ps ax | ag "
+alias sp="bin/spring"
+alias sprs="bin/spring rspec -fd"
+alias sprk="bin/spring rake"
+alias up='cd ../'
+alias upp='cd ../../'
 
 
 # function
@@ -130,8 +147,3 @@ function plrb () {
 function refresh_zsh () {
     source $HOME/.zshrc
 }
-
-function pullreq () {
-    hub compare
-}
-
