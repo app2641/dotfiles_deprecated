@@ -10,6 +10,10 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
@@ -48,45 +52,11 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 # User configuration
-$HOME/.env
 
-# rbenv
-# eval "$(rbenv init - zsh)"
-if [ -d ${HOME}/.rbenv ] ; then
-    PATH=${HOME}/.rbenv/bin:${PATH}
-    export PATH
-    eval "$(rbenv init -)"
-fi
-
-# docker
-# eval "$(docker-machine env default)"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
-# prompt
-export ZSH_THEME_GIT_PROMPT_DIRTY="%{[33m%}%  ✗"
-export ZSH_THEME_GIT_PROMPT_CLEAN=""
-function parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
-}
-
-DEFAULT=$'\U1F430 '
-ERROR=$'\U1F363 '
-export PS1="%{[0m%}
-%{[32m%}%n %{[32m%}%~%{[32m%}\$(parse_git_dirty)
-%(?|%{[36m%}${DEFAULT}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
-
-# export ZSH_THEME_GIT_PROMPT_DIRTY="✗"
-# export ZSH_THEME_GIT_PROMPT_CLEAN=""
-# function parse_git_branch() {
-  # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
-# }
-
-# DEFAULT=$'\U1F430'
-# ERROR=$'\U1F363'
-# export PS1="
-# %F{green}[%{%}%~%{%}]%f%F{cyan}\$(parse_git_branch)%f %F{yellow}\$(parse_git_dirty)%f
-# %(?|%{%}${DEFAULT} ${DEFAULT} ${DEFAULT}  <|%{%}${ERROR} ${ERROR} ${ERROR}  <)%{%} %{%}"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -112,24 +82,37 @@ export PS1="%{[0m%}
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias alc="alc-cmd s"
-alias be="bundle exec"
-alias db:st="spring rake db:migrate:status"
-alias db:up="spring rake db:migrate"
-alias db:down="spring rake db:rollback"
+
+
+# path
+PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"
+export GOPATH="$HOME/Documents/GoProjects"
+
+# alias
+alias alc='alc-cmd s'
+alias be='bundle exec'
+alias date='gdate'
+alias db:st='bin/rake db:migrate:status'
+alias db:up='bin/rake db:migrate'
+alias db:down='bin/rake db:rollback'
 alias dm='docker-machine'
 alias dc='docker-compose'
-alias g="git"
-alias rk="bin/rake"
-alias rs="bin/rspec"
+alias g='hub'
+alias grep='ggrep'
+alias ls='exa'
 alias pullreq='hub compare'
-alias sch="ps ax | ag "
-alias sp="bin/spring"
-alias sprs="bin/spring rspec -fd"
-alias sprk="bin/spring rake"
+alias rk='bin/rake'
+alias rs='bin/rspec'
+alias sch='ps ax | ag '
+alias sp='bin/spring'
+alias sprk='bin/spring rails'
+alias sprs='bin/spring rspec -fd'
+alias t='tmux'
+alias tls='tmux ls'
+alias ta='tmux attach-session -t '
 alias up='cd ../'
 alias upp='cd ../../'
-
+alias zssh="$GOPATH/bin/zssh"
 
 # function
 function start_redis () {
@@ -140,10 +123,84 @@ function start_postgres () {
     postgres -D /usr/local/var/postgres
 }
 
+function start_monit () {
+    sudo monit -c /etc/monit/monitrc
+}
+
+function greset () {
+    git reset --hard
+}
+
 function plrb () {
     git pull --rebase origin `git rev-parse --abbrev-ref HEAD`
 }
 
-function refresh_zsh () {
-    source $HOME/.zshrc
+# function gls () {
+    # git ls-files | ag $1
+# }
+
+# function docker_host () {
+    # docker-machine env default | ag tcp | sed -e 's/[^:.0-9]//g' -e 's/^://' -e 's/:.*//'
+# }
+
+# function start_kibana () {
+    # kibana -e http://`docker_host`:9200 -c ~/.kibana.yml
+# }
+
+# function open_kibana () {
+    # open http://`docker_host`:5601
+# }
+
+function psk () {
+    sch $1 | cut -f 1 -d ' ' | xargs kill
 }
+
+function update_master () {
+    g ch master && g ft && plrb && bundle install
+}
+
+function update_db () {
+    db:up && db:up RAILS_ENV=test && g ch db/schema.rb
+}
+
+# rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# fuck
+eval $(thefuck --alias)
+
+# docker-machine
+# eval "$(docker-machine env default)"
+
+# go
+export PATH="$PATH:$HOME/Documents/GoProjects/bin"
+
+# zssh
+eval "$($GOPATH/bin/zssh --zsh-completion)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# prompt
+export ZSH_THEME_GIT_PROMPT_DIRTY="✗"
+export ZSH_THEME_GIT_PROMPT_CLEAN=""
+function parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+}
+
+RABBIT=$'\U1F430'
+BEAR=$'\U1F43B'
+DOG=$'\U1F436'
+ERROR=$'\U1F363'
+export PS1="
+%F{green}[%{%}%~%{%}]%f%F{cyan}\$(parse_git_branch)%f %F{yellow}\$(parse_git_dirty)%f
+%(?|%{%}${RABBIT} ${BEAR} ${DOG} |%{%}${ERROR} ${ERROR} ${ERROR} )%{%} %{%}"
+
+# ssh先のシェルで日本語を使えるようにする
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
