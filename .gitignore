@@ -33,12 +33,3 @@ Session.vim
 
 
 ### dotfiles
-
-vim/autoload/*
-!vim/autoload/.gitkeep
-vim/bundle/*
-!vim/bundle/.gitkeep
-vim/colors/*
-!vim/colors/.gitkeep
-vim/plugin/*
-
