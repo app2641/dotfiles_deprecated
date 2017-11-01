@@ -21,5 +21,5 @@ set history=1000
 set ft=ruby.serverspec
 
 " 補完にneocomplcacheを使う
-source ~/dotfiles/vimrc.completion.neocomplcache
+source ~/dotfiles_deprecated/vimrc.completion.neocomplcache
 
