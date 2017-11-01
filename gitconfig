@@ -3,19 +3,23 @@
   br = branch
   ch = checkout
   ci = commit
+  cia = commit --amend
   clean-br = !git branch -d `git branch --merged master | grep -v master`
+  cp = cherry-pick
   df = diff HEAD
   d1 = diff HEAD~
   d2 = diff HEAD~~
   d3 = diff HEAD~~~
   d4 = diff HEAD~~~~
   d5 = diff HEAD~~~~~
+  df-prod = !git diff `curl -s https://forkwell.com/revision.txt`
   df-name-prod = diff --name-only origin/master...@
   empty= commit --allow-empty
   ft = fetch --prune
   fta = fetch --all --prune
   ls = ls-files
   lg = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+  lg-prod = !git log --oneline --merges `curl -s https://forkwell.com/revision.txt`...HEAD
   ls = ls-files
   nm = merge --no-ff
   pl = pull --rebase
