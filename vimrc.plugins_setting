@@ -562,7 +562,7 @@ nnoremap <Leader>nsp :call RunNearestSpec()<CR>
 nnoremap <Leader>lsp :call RunLastSpec()<CR>
 nnoremap <Leader>asp :call RunAllSpecs()<CR>
 let g:rspec_command = "sprs {spec}"
-let g:rspec_runner = "os_x_iterm"
+let g:rspec_runner = "os_x_iterm2"
 
 
 "------------------------------------
