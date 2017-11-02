@@ -4,8 +4,8 @@
 if has('gui_macvim')
 "フォント設定
 "set guifont=Migu\ 1M:h16
-" set guifont=Source\ Code\ Pro\ for\ Powerline:h15
-set guifont=Source\ Code\ Pro:h13
+set guifont=Source\ Code\ Pro\ for\ Powerline:h15
+" set guifont=Source\ Code\ Pro:h13
 "set guifont=ヒラギノ明朝\ Pro:h18
 
 " 縦幅
