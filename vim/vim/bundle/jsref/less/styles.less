@@ -1,0 +1,63 @@
+@import 'bootstrap/reset.less';
+@import 'bootstrap/variables.less';
+@import 'bootstrap/mixins.less';
+@import 'bootstrap/type.less';
+@import 'bootstrap/tables.less';
+@import 'bootstrap/patterns.less';
+
+.page-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@import 'jqapi.main.less';
+
+.entry-title {
+    background-color: #FFCCEE;
+}
+
+html { overflow-y: hidden; }
+#content { overflow-y: scroll; overflow-x: auto; }
+
+#navigation #results li.sub,
+#navigation #static-list li.sub {
+    a {
+        display: block;
+        div {
+            display: inline;
+            line-height: 28px;
+        }
+        .tag {
+            display: inline;
+            font-size: 8px;
+            padding: 2px;
+            border-radius: 2px;
+            margin-left: 4px;
+            vertical-align: top;
+            &.es {
+                background-color: #eFccf6;
+                border: 1px solid #FFccf6;
+                color: #222222;
+                &.es5 {
+                    border: 1px solid #EEaae6;
+                    background-color: #cFccf6;
+                }
+            }
+            &.deprecated, &.obsolete {
+                overflow:hidden;
+                border: 1px solid #5151FF;
+                background-color: #B9B9FF;
+                font-weight: bold;
+                text-align: center;
+            }
+            &.nonstandard {
+                overflow:hidden;
+                border: 1px solid #FFB752;
+                background-color: #FEE3BC;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+    }
+}
+
